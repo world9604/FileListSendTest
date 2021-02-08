@@ -35,8 +35,7 @@ class MainActivity : AppCompatActivity() {
             images.add(MultipartBody.Part.createFormData("test_image", file.name, surveyBody))
         }
 
-        val service = CampusRetrofitServiceFactory.create()
-        service.uploadPostingImage(token, images).enqueue(object : retrofit2.Callback<List<String>?> {
+        CampusRetrofitServiceFactory.create().uploadPostingImage(token, images).enqueue(object : retrofit2.Callback<List<String>?> {
             override fun onFailure(call: Call<List<String>?>, t: Throwable) {
                 Log.d("TEST", "onFailure()")
                 Log.d("TEST", "onFailure2()")

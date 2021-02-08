@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object CampusRetrofitServiceFactory {
 
-    val CAMPUS_TALK_BASE_URL = "http://52.79.106.253:8080"
+    val CAMPUS_TALK_BASE_URL = "http://52.79.106.253:8080/api/"
 
     val interceptor = HttpLoggingInterceptor()
         .setLevel(HttpLoggingInterceptor.Level.BODY)
