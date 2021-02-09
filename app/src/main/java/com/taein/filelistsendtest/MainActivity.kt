@@ -31,11 +31,12 @@ class MainActivity : AppCompatActivity() {
 
         val images = ArrayList<MultipartBody.Part>()
         for (file in fileList) {
-            val surveyBody = RequestBody.create(MediaType.parse("image/*"), file)
-            images.add(MultipartBody.Part.createFormData("test_image", file.name, surveyBody))
+            val surveyBody = RequestBody.create(MediaType.parse("multipart/form-data"), file)
+            images.add(MultipartBody.Part.createFormData("file", file.name, surveyBody))
         }
 
-        CampusRetrofitServiceFactory.create().uploadPostingImage(token, images).enqueue(object : retrofit2.Callback<List<String>?> {
+        CampusRetrofitServiceFactory.create().uploadPostingImage(token, images)
+            .enqueue(object : retrofit2.Callback<List<String>?> {
             override fun onFailure(call: Call<List<String>?>, t: Throwable) {
                 Log.d("TEST", "onFailure()")
                 Log.d("TEST", "onFailure2()")
